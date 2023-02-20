@@ -26,6 +26,6 @@ func RefreshDb() {
 	for allElementsFromDb.Next() {
 		var user model.User
 		allElementsFromDb.Scan(&user.Id, &user.FirstName, &user.SecondName, &user.Age, &user.Email)
-		model.AddData(user)
+		model.AllData.Store(user.Id, user)
 	}
 }
