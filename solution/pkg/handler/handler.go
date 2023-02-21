@@ -15,7 +15,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 	t.Execute(w, nil)
 	r.ParseForm()
-	if r.Form["id"][0] != "" {
+	if len(r.Form["id"]) != 0 {
 		idStr := r.Form["id"][0]
 		id, err := strconv.Atoi(idStr)
 		if err != nil {
