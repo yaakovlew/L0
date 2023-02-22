@@ -6,12 +6,12 @@ import (
 )
 
 func Message() {
-	sc, err := stan.Connect("prod", "store", stan.NatsURL("nats://localhost:4222"))
+	sc, err := stan.Connect("prod", "store", stan.NatsURL("nats://localhost:4223"))
 	if err != nil {
 		panic(err)
 	}
 	defer sc.Close()
-	sc.Publish("foo", []byte("Hello World"))
+	//sc.Publish("foo", []byte("Hello World"))
 	sub, _ := sc.Subscribe("foo", func(m *stan.Msg) {
 		fmt.Printf("Received a message: %s\n", string(m.Data))
 	})
