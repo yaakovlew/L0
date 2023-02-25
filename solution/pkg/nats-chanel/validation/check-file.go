@@ -8,7 +8,7 @@ func ValidationMessage(m []byte) (count bool) {
 	var f interface{}
 	err := json.Unmarshal(m, &f)
 	if err != nil {
-		panic(err)
+		return false
 	}
 	msg := f.(map[string]interface{})
 	count = true

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/nats-io/stan.go"
 	"solution/pkg/model"
+	"strconv"
 	"time"
 )
 
@@ -24,8 +25,8 @@ func Produce() {
 	b, _ = json.Marshal(testCount)
 	time.Sleep(3 * time.Second)
 	sc.Publish("bestellungen", b)
-	/*for i := 1; ; i++ {
+	for i := 1; ; i++ {
 		time.Sleep(3 * time.Second)
 		sc.Publish("bestellungen", []byte("Bestellung "+strconv.Itoa(i)))
-	}*/
+	}
 }
