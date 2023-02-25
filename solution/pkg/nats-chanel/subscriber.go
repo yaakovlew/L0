@@ -1,8 +1,9 @@
 package nats_chanel
 
 import (
-	"fmt"
 	stan "github.com/nats-io/stan.go"
+	"solution/pkg/db"
+	"sync"
 )
 
 func Take() {
@@ -10,11 +11,15 @@ func Take() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("hi")
 	defer sc.Close()
 
 	sc.Subscribe("bestellungen", func(m *stan.Msg) {
-		fmt.Printf("Got: %s\n", string(m.Data))
+		db.AddInDB(m.Data)
 	})
-
+	wait := func() {
+		w := sync.WaitGroup{}
+		w.Add(1)
+		w.Wait()
+	}
+	wait()
 }

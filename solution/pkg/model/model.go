@@ -1,5 +1,7 @@
 package model
 
-import "sync"
+import (
+	"sync"
+)
 
 var AllData sync.Map

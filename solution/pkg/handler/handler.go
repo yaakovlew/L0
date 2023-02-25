@@ -22,6 +22,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 		}
 		element, exist := model.AllData.Load(id)
+		//fmt.Println(element)
 		//el, ok := element.(model.User)
 		//if !ok {
 		//
