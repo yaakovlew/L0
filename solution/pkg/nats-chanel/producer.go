@@ -19,10 +19,6 @@ func Produce() {
 	user := model.User{"Andre", "Pirlo", "Apirlo@mail.ru"}
 	b, _ := json.Marshal(user)
 	sc.Publish("bestellungen", b)
-	testCount := make(map[string]string)
-	testCount["FirstName"] = "Pedro"
-	testCount["SecondName"] = "Bonucci"
-	b, _ = json.Marshal(testCount)
 	time.Sleep(3 * time.Second)
 	sc.Publish("bestellungen", b)
 	for i := 1; ; i++ {
